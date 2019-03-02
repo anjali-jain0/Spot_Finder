@@ -1,0 +1,153 @@
+<!doctype html>
+<html>
+<head>
+	<title>Seeing Spots</title>
+	<link href='style.css' rel="stylesheet">
+</head>
+<body>
+	<canvas id="canvas1" width="100%" height="100%"></canvas>
+	<h3 id='check'></h3>
+	<p class='head head1'>Rounds Remaining:<span id="n1"></span>
+	<p class='head head2'>Count: <span id='count'></span></p>
+    <div id="numbers"></div>
+	
+</body>
+<script>
+
+	window.addEventListener('load',function(){
+ 	var parent = document.getElementById('numbers');
+    var count=0;
+    document.getElementById('count').innerHTML=count;
+    for(var i=1;i<=20;i++){
+    	
+   		var button=document.createElement('button');
+   		button.innerHTML=i;
+   		button.setAttribute( "data", i );
+        button.onclick = function( e ) {count++;document.getElementById('count').innerHTML=count;f( this.getAttribute( "data" )); };
+   		button.style.backgroundColor="lightgrey";
+   		button.style.width='44px';
+   		button.style.height='40px';
+        parent.appendChild(button);
+    }
+    });
+  
+	var rounds=30;
+	var random=0;
+
+	document.getElementById("n1").innerHTML=rounds;
+    var c=document.getElementById("canvas1");
+	var ctx=c.getContext('2d');
+	c.width=window.innerWidth*0.48;
+	c.height=window.innerHeight*0.60;
+    
+    random=Math.floor(Math.random()*6 +1); 
+
+    var ir=0;
+	var no=0;
+	var t1=0;
+
+	function f(no)
+	 {
+	 	if(no==random)
+	 	{
+	        t1=setTimeout(correct,1);
+	 		rounds-=1;
+	 		if(rounds==0){alert('Game Over!!')};
+	 		document.getElementById("n1").innerHTML=rounds;
+	 		for(var w=0;w<random;w++)
+		{
+			array[w].r=12;
+		}
+	 		random=Math.floor(Math.random()*6 +1);
+	 		ir=setTimeout(remove,500); 
+	 	}
+	 	else
+	 	{
+	 		t1=setTimeout(wrong,1);
+	 	}
+	 }
+	
+	var check=document.getElementById('check');
+	function wrong()
+	{
+		console.log('wrong');
+		check.innerHTML='WRONG!';
+		t1=setTimeout(clear,200);
+
+	}
+    
+    function correct()
+	{
+		console.log('correct');
+		check.innerHTML='CORRECT!';
+		t1=setTimeout(clear,200);
+	}
+
+    function clear(){
+    	check.innerHTML='';
+    }
+	function Ball(x,y,r) 
+	{
+		this.x=x;
+		this.y=y;
+		this.r=r;
+
+		this.draw=function()
+		{
+			ctx.beginPath();
+			ctx.fillStyle="white";
+			ctx.arc(this.x,this.y,this.r,0,2*Math.PI);
+			ctx.fill();
+		}
+	}
+
+	var x8=0,y8=0,y9=0,x9=0,xD=0,yD=0;
+	function getDistance(x8,x9,y8,y9)
+	{
+		xD=x9-x8;
+		yD=y9-y8;
+		return Math.sqrt(Math.pow(xD,2)+Math.pow(yD,2));
+	}
+
+	var array=[];var x=0;var y=0;var r=0;
+	for(var i=0;i<20;i++)
+	{
+		x=(Math.random()*(c.width-40))+20;
+		y=(Math.random()*(c.height-40))+20;
+		r=12;
+		array.push(new Ball(x,y,r));
+		for(var p=0;p<i;p++)
+		{
+			if(array[p].x==array[i].x || array[p].y==array[i].y)
+			{
+				x=(Math.random()*(c.width-40))+20;
+				y=(Math.random()*(c.height-40))+20;
+				p=-1;
+			}
+	}}
+    
+	function animate()
+	{
+		requestAnimationFrame(animate);
+		ctx.clearRect(0,0,innerWidth,innerHeight);
+		for(var j=0;j<random;j++)
+		{
+			array[j].draw();
+		}
+	}
+
+    ir=setTimeout(remove,500);
+   
+   	animate();
+   
+    function remove()
+    {
+    	for(var q=0;q<random;q++)
+		{
+			array[q].r=0;
+		}
+    }
+
+ 
+</script>
+</html>

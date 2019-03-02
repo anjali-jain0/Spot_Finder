@@ -1,0 +1,41 @@
+#canvas1
+	{
+		border:1px solid green;
+		position:absolute;
+		top:80px;
+		left:360px;
+	}
+	body
+	{
+		background-color: rgba(48,48,48);
+	}
+	#numbers
+	{
+		cursor:pointer;
+		position:absolute;
+		top:80%;
+		left:18%;
+	}
+.head2
+{
+top:23px;
+left:620px;
+}
+#check
+{
+position:absolute;
+top:230px;
+left:640px;
+}
+.head
+{
+color:lightgrey;
+font-family:verdana;
+font-size:17px;
+position:absolute;
+}
+.head1
+{
+top:-3px;
+left:580px;
+}
