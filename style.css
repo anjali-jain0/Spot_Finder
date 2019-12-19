@@ -1,41 +1,48 @@
-#canvas1
-	{
-		border:1px solid green;
-		position:absolute;
-		top:80px;
-		left:360px;
-	}
-	body
-	{
-		background-color: rgba(48,48,48);
-	}
-	#numbers
-	{
-		cursor:pointer;
-		position:absolute;
-		top:80%;
-		left:18%;
-	}
-.head2
+#canvas
 {
-top:23px;
-left:620px;
+	border:1px solid green;
+	position:absolute;
+	top:80px;
+	left:360px;
+}
+body
+{
+	background-color: rgba(48,48,48);
+}
+#numbers
+{
+	cursor:pointer;
+	position:absolute;
+	top:80%;
+	left:18%;
+}
+.secondHeading
+{
+	top:23px;
+	left:620px;
 }
 #check
 {
-position:absolute;
-top:230px;
-left:640px;
+	position:absolute;
+	top:230px;
+	left:640px;
 }
-.head
+.heading
 {
-color:lightgrey;
-font-family:verdana;
-font-size:17px;
-position:absolute;
+	color:lightgrey;
+	font-family:verdana;
+	font-size:17px;
+	position:absolute;
 }
-.head1
+.mainHeading
 {
-top:-3px;
-left:580px;
+	top:-3px;
+	left:580px;
+}
+
+.numbersBtn
+{
+	background-color:"lightgrey";
+	width:44px;
+	height:40px;
 }
